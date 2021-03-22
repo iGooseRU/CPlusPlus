@@ -6,11 +6,25 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/main.cpp
-iostream
--
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CBrokenLine.h
+CPoint.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPoint.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CLock_brokenLine.h
+CBrokenLine.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CBrokenLine.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPoint.h
 cmath
 -
-string
+iostream
 -
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPolygon.cpp
+CPolygon.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPolygon.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPolygon.h
+CLock_brokenLine.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CLock_brokenLine.h
 

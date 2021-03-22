@@ -80,6 +80,42 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CBrokenLine.cpp">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CBrokenLine.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CLock_brokenLine.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPoint.cpp">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPoint.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPolygon.cpp">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CPolygon.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CRegular_Polygon.cpp">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CRegular_Polygon.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CTrapezoid.cpp">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CTrapezoid.h">
+			<Option target="1"/>
+		</Unit>
+		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/CTriangle.h">
+			<Option target="1"/>
+		</Unit>
 		<Unit filename="C:/Users/86532/Study/1 grade/Proga/Labs/C++/1/main.cpp">
 			<Option target="1"/>
 		</Unit>

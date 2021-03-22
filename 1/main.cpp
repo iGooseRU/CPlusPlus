@@ -1,7 +1,15 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include "CPoint.h"
+#include "CBrokenLine.h"
+#include "CLock_brokenLine.h"
+#include "CPolygon.h"
+#include "CTriangle.h"
+#include "CTrapezoid.h"
+#include "CRegular_Polygon.h"
 
+/*
 class CPoint{
 private:
     float x_;
@@ -34,34 +42,42 @@ public:
         y_ = point.y_;
     }
 
-    bool operator==(CPoint &a){
+    bool operator==(const CPoint &a){
         if (x_ == a.get_pointX() && y_ == a.get_pointY()){
             return true;
         }
         return false;
     }
 
-    ~CPoint(){};
 
     void set_point(float x, float y){
         this -> x_ = x;
         this -> y_ = y;
     };
 
-    float get_pointX(){
+    float get_pointX() const{
         return x_;
     }
 
-    float get_pointY(){
+    float get_pointY() const{
         return y_;
     }
+
+    static float get_LineLength(CPoint &a1, CPoint &a2){
+        return sqrt(pow((a2.get_pointX() - a1.get_pointX()), 2) +
+                    pow((a2.get_pointY() - a1.get_pointY()), 2));
+    }
+
+    ~CPoint()= default;
 };
 
 std::ostream& operator<< (std::ostream &out, CPoint &point){
     out << point.get_pointX() << " " << point.get_pointY();
     return out;
 }
+*/
 
+/*
 class CBrokenLine{
 
 protected:
@@ -89,9 +105,9 @@ public:
         array_ = obj.array_;
     }
 
-    ~CBrokenLine(){};
 
-    bool check_locked(){
+
+    void check_locked(){
         if (array_[0] == array_[length_ - 1]){
             std::cout << "correct, the line is locked" << std::endl;
         } else {
@@ -120,16 +136,12 @@ public:
         length_++;
     }
 
-    float get_LineLength(CPoint &a1, CPoint &a2){
-        return sqrt(pow((a2.get_pointX() - a1.get_pointX()), 2) +
-                               pow((a2.get_pointY() - a1.get_pointY()), 2));
-    }
 
 
-    float get_perimeter(){
+    virtual float get_perimeter(){
         float result = 0;
         for (int i = 1; i < length_; i++){
-            result += get_LineLength(array_[i - 1], array_[i]);
+            result += CPoint::get_LineLength(array_[i - 1], array_[i]);
         }
         std::cout << "The perimeter is: " << result << std::endl;
         return result;
@@ -145,11 +157,18 @@ public:
         return array_;
     }
 
-    int get_length_(){
+    int get_length_() const{
         return length_;
     }
-};
 
+    ~CBrokenLine(){
+        delete[] array_;
+    }
+
+};
+*/
+
+/*
 class CLock_brokenLine : public CBrokenLine{
 
 public:
@@ -161,9 +180,11 @@ public:
 
      CLock_brokenLine(){}
 
-    ~CLock_brokenLine(){};
+    ~CLock_brokenLine()= default;
 };
+*/
 
+/*
 class CPolygon : public CLock_brokenLine{
 
 public:
@@ -176,38 +197,13 @@ public:
         check_ConvexShape();
 
         std::cout << "The polygon has " << length_ - 1 << " vertexes" << std::endl;
-
-        bool flag = false;
-        CPoint current = array_[0];
-
-        for (int i = 1; i < length_; i++) {
-            if (current.get_pointX() != array_[i].get_pointX()){
-                flag = true;
-                break;
-            }
-        }
-
-        if (!flag){
-            throw "All points on one X line";
-        }
-
-        flag = false;
-        for (int i = 1; i < length_; i++) {
-            if (current.get_pointY() != array_[i].get_pointY() ){
-                flag = true;
-                break;
-            }
-        }
-        if (!flag){
-            throw "All points on one Y line";
-        }
-
     }
+
     void get_square(){
         int n = length_ - 1;
-        float sum1 = 0;
-        float sum2 = 0;
-        float result;
+        double sum1 = 0;
+        double sum2 = 0;
+        double result;
         for (int i = 0; i < n; i++){
             sum1 = sum1 + array_[i].get_pointX() * array_[i + 1].get_pointY();
         }
@@ -222,33 +218,34 @@ public:
     }
 
      CPolygon(){};
-    ~CPolygon(){};
+
+    ~CPolygon()= default;
 };
 
 
 void CPolygon::check_ConvexShape(){
-    for (int i = 1; i < length_; i++){
-     //   std::cout << array_[i] << std::endl;
+    for (int i = 1; i < length_ - 1; i++){
         float res = (array_[i].get_pointX() - array_[i - 1].get_pointX()) *
                            (array_[i + 1].get_pointY() - array_[i].get_pointY()) -
-                                (array_[i].get_pointY() - array_[i - 1].get_pointY()) *
-                                      (array_[i + 1].get_pointX() - array_[i].get_pointX());
-        if (res >= 0) {
+                                 (array_[i].get_pointY() - array_[i - 1].get_pointY()) *
+                                       (array_[i + 1].get_pointX() - array_[i].get_pointX());
+        std::cout << res << "!!!" << std::endl;
+        if (res > 0) {
             try
             {
                 throw -3;
             }
             catch (int a)
             {
-                std::cerr << "ERROR, the line doesn't convex: " << a << '\n';
+                std::cerr << "ERROR, the polygon doesn't convex: " << a << '\n';
             }
         }
     }
 }
 
+*/
 
-
-
+/*
 class CTriangle : public CPolygon{
 public:
 
@@ -271,12 +268,11 @@ public:
         }
     };
 
-
-
+    ~CTriangle()= default;
 
 };
-
-
+*/
+/*
 
 class CTrapezoid : public CPolygon {
 
@@ -303,14 +299,14 @@ public:
 
         check_parallel();
 
-
-
     };
+
+    ~CTrapezoid()= default;
 
 };
 
 
-void CTrapezoid::check_parallel() {
+ void CTrapezoid::check_parallel() {
    float k = (array_[0].get_pointY() - array_[3].get_pointY()) /
                        (array_[0].get_pointX() - array_[3].get_pointX());
    float k1 = (array_[1].get_pointY() - array_[2].get_pointY()) /
@@ -326,7 +322,9 @@ void CTrapezoid::check_parallel() {
    }
 }
 
+*/
 
+/*
 class CRegular_Polygon : public CPolygon{
 
 public:
@@ -339,33 +337,42 @@ public:
         std::cout << "The polygon has " << length_ -1 << " vertexes" << std::endl;
 
         float temp;
-        float first_line = get_LineLength(array_[0], array_[1]);
+        float first_line = CPoint::get_LineLength(array_[0], array_[1]);
         for (int i = 2; i < length_; i++){
-            temp = get_LineLength(array_[i - 1], array_[i]);
-        }
-
-        if (temp != first_line){
-            try {throw -6;}
-            catch (int a) {
-                std::cerr << "The polygon is not regular: " << a << std::endl;
+            temp = CPoint::get_LineLength(array_[i - 1], array_[i]);
+            if (temp != first_line){
+                try {
+                    throw -6;
+                }
+                catch (int a) {
+                    std::cerr << "The polygon is not regular: " << a << std::endl;
+                }
+            } else {
+                std::cout << "The polygon is regular" << std::endl;
+                get_perimeter();
+                get_length_();
             }
-        } else {
-            std::cout << "The polygon is regular" << std::endl;
-            get_perimeter();
-            get_length_();
         }
     }
 
+    ~CRegular_Polygon()= default;
+
 };
+*/
+
+std::ostream& operator<< (std::ostream &out, CPoint &point){
+    out << point.get_pointX() << " " << point.get_pointY();
+    return out;
+}
 
 
 int main(){
 
     CPoint a(0, 0);
-    CPoint b(2, 3);
-    CPoint c(4, 4);
-    CPoint d(6, 0);
-    CPoint e(0, 0);
+    CPoint b(3, 4);
+    CPoint c(6, 0);
+    CPoint d(0, 0);
+   // CPoint e(0, 0);
 
 
 
@@ -376,7 +383,7 @@ int main(){
     BrLine.add_point(b);
     BrLine.add_point(c);
     BrLine.add_point(d);
-    BrLine.add_point(e);
+   // BrLine.add_point(e);
 
     BrLine.print_BrokenLine();
     BrLine.get_perimeter();

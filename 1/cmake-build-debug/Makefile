@@ -142,6 +142,141 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/build
 .PHONY : 1/fast
 
+CBrokenLine.obj: CBrokenLine.cpp.obj
+
+.PHONY : CBrokenLine.obj
+
+# target to build an object file
+CBrokenLine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CBrokenLine.cpp.obj
+.PHONY : CBrokenLine.cpp.obj
+
+CBrokenLine.i: CBrokenLine.cpp.i
+
+.PHONY : CBrokenLine.i
+
+# target to preprocess a source file
+CBrokenLine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CBrokenLine.cpp.i
+.PHONY : CBrokenLine.cpp.i
+
+CBrokenLine.s: CBrokenLine.cpp.s
+
+.PHONY : CBrokenLine.s
+
+# target to generate assembly for a file
+CBrokenLine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CBrokenLine.cpp.s
+.PHONY : CBrokenLine.cpp.s
+
+CPoint.obj: CPoint.cpp.obj
+
+.PHONY : CPoint.obj
+
+# target to build an object file
+CPoint.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPoint.cpp.obj
+.PHONY : CPoint.cpp.obj
+
+CPoint.i: CPoint.cpp.i
+
+.PHONY : CPoint.i
+
+# target to preprocess a source file
+CPoint.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPoint.cpp.i
+.PHONY : CPoint.cpp.i
+
+CPoint.s: CPoint.cpp.s
+
+.PHONY : CPoint.s
+
+# target to generate assembly for a file
+CPoint.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPoint.cpp.s
+.PHONY : CPoint.cpp.s
+
+CPolygon.obj: CPolygon.cpp.obj
+
+.PHONY : CPolygon.obj
+
+# target to build an object file
+CPolygon.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPolygon.cpp.obj
+.PHONY : CPolygon.cpp.obj
+
+CPolygon.i: CPolygon.cpp.i
+
+.PHONY : CPolygon.i
+
+# target to preprocess a source file
+CPolygon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPolygon.cpp.i
+.PHONY : CPolygon.cpp.i
+
+CPolygon.s: CPolygon.cpp.s
+
+.PHONY : CPolygon.s
+
+# target to generate assembly for a file
+CPolygon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CPolygon.cpp.s
+.PHONY : CPolygon.cpp.s
+
+CRegular_Polygon.obj: CRegular_Polygon.cpp.obj
+
+.PHONY : CRegular_Polygon.obj
+
+# target to build an object file
+CRegular_Polygon.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CRegular_Polygon.cpp.obj
+.PHONY : CRegular_Polygon.cpp.obj
+
+CRegular_Polygon.i: CRegular_Polygon.cpp.i
+
+.PHONY : CRegular_Polygon.i
+
+# target to preprocess a source file
+CRegular_Polygon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CRegular_Polygon.cpp.i
+.PHONY : CRegular_Polygon.cpp.i
+
+CRegular_Polygon.s: CRegular_Polygon.cpp.s
+
+.PHONY : CRegular_Polygon.s
+
+# target to generate assembly for a file
+CRegular_Polygon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CRegular_Polygon.cpp.s
+.PHONY : CRegular_Polygon.cpp.s
+
+CTrapezoid.obj: CTrapezoid.cpp.obj
+
+.PHONY : CTrapezoid.obj
+
+# target to build an object file
+CTrapezoid.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CTrapezoid.cpp.obj
+.PHONY : CTrapezoid.cpp.obj
+
+CTrapezoid.i: CTrapezoid.cpp.i
+
+.PHONY : CTrapezoid.i
+
+# target to preprocess a source file
+CTrapezoid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CTrapezoid.cpp.i
+.PHONY : CTrapezoid.cpp.i
+
+CTrapezoid.s: CTrapezoid.cpp.s
+
+.PHONY : CTrapezoid.s
+
+# target to generate assembly for a file
+CTrapezoid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\1.dir\build.make CMakeFiles/1.dir/CTrapezoid.cpp.s
+.PHONY : CTrapezoid.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +313,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... 1
+	@echo ... CBrokenLine.obj
+	@echo ... CBrokenLine.i
+	@echo ... CBrokenLine.s
+	@echo ... CPoint.obj
+	@echo ... CPoint.i
+	@echo ... CPoint.s
+	@echo ... CPolygon.obj
+	@echo ... CPolygon.i
+	@echo ... CPolygon.s
+	@echo ... CRegular_Polygon.obj
+	@echo ... CRegular_Polygon.i
+	@echo ... CRegular_Polygon.s
+	@echo ... CTrapezoid.obj
+	@echo ... CTrapezoid.i
+	@echo ... CTrapezoid.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
