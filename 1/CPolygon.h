@@ -20,7 +20,7 @@ public:
         std::cout << "The polygon has " << length_ - 1 << " vertexes" << std::endl;
     }
 
-    void get_square(){
+   virtual void get_square() const {
         int n = length_ - 1;
         double sum1 = 0;
         double sum2 = 0;

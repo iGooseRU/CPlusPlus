@@ -7,7 +7,6 @@
 #include <cmath>
 #include <iostream>
 
-
 class CPoint{
 private:
     float x_;
@@ -40,7 +39,7 @@ public:
         y_ = point.y_;
     }
 
-    bool operator==(const CPoint &a){
+    bool operator==(const CPoint &a) const{
         if (x_ == a.get_pointX() && y_ == a.get_pointY()){
             return true;
         }
@@ -61,7 +60,7 @@ public:
         return y_;
     }
 
-    static float get_LineLength(CPoint &a1, CPoint &a2){
+    static double get_LineLength(CPoint &a1, CPoint &a2){
         return sqrt(pow((a2.get_pointX() - a1.get_pointX()), 2) +
                     pow((a2.get_pointY() - a1.get_pointY()), 2));
     }
