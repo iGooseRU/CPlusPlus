@@ -1,100 +1,246 @@
 #include <iostream>
+#include <map>
 
-class CPolynom{
+class CPolinomial{
+
 protected:
-    int n_, k_;
-    double x_;
-    double *c_;
+    std::map<int, float> MyMap_;
 
 public:
-    CPolynom(){
-        n_ = 1;
-        k_ = 1;
-        this -> c_ = new double [(n_ - k_) + 1];
-        c_[0] = 1;
+    CPolinomial() {
+        MyMap_.emplace(1,1);
     }
 
-    CPolynom(int n, int k){
-        this -> n_ = n;
-        this -> k_ = k;
-        this -> c_ = new double [(n - k) + 1];  /// n >= k;
-        for (int i = n; i >= k; i--){
-            std::cout << "Enter coefficient " << i << ":\n";
-            std::cin >> c_[i - k_];
+    CPolinomial(const std::map<float, int>& myMap)
+    {
+        for (const auto& obj : myMap)
+        {
+            if (obj.second < 0)
+                try
+                {
+                    throw -1;
+                }
+                catch (int a)
+                {
+                    std::cerr << "Degree must be > 0:  " << a << '\n';
+                }
+        }
+
+        for (const auto element : myMap)
+        {
+            MyMap_[element.second] = element.first;
         }
     }
 
-    void show_polynom(){
-        for (int i = n_; i >= k_; i--){
-            if (i == k_){
-                std::cout << "(" << c_[i - k_] << ")*(x^" << i << ")";
-            } else
-            std::cout << "(" << c_[i - k_] << ")*(x^" << i << ")+";
-        }
-        std::cout << std::endl;
+    CPolinomial(const CPolinomial& other) = default;
+
+    void get_map(int num){
+        auto it = MyMap_.find(num);
+        std::cout << it -> second;
     }
 
-    CPolynom& operator=(const CPolynom &obj){
-        n_ = obj.n_;
-        k_ = obj.k_;
-        x_ = obj.x_;
-        c_ = new double [(n_ - k_) + 1];
-        for (int i = obj.n_; i >= obj.k_; i--){
-            c_[i - k_] = obj.c_[i - k_];
+    CPolinomial& operator=(const CPolinomial& other){
+        if (*this != other){
+            MyMap_ = other.MyMap_;
+            return *this;
         }
         return *this;
     }
 
-    friend bool operator==(const CPolynom &left,const CPolynom &right);
-    friend bool operator!=(const CPolynom &left,const CPolynom &right);
-    friend CPolynom operator+(const CPolynom &left,const CPolynom &right);
-    friend CPolynom operator-(const CPolynom &left,const CPolynom &right);
-    friend CPolynom operator-(const CPolynom &obj);
+    CPolinomial operator-() const{
+        CPolinomial polinomial;
+        for (const auto& pair : MyMap_){
+            polinomial.MyMap_[pair.first] = -pair.second;
+        }
+        return polinomial;
+    }
+
+    CPolinomial operator+(const CPolinomial& other) const{
+        int deg;
+        double coefficient;
+        CPolinomial polinomial;
+
+        for (const auto& pair : MyMap_){
+            deg = pair.first;
+            coefficient = pair.second;
+            polinomial.MyMap_[deg] += coefficient;
+        }
+
+        for (const auto& pair : other.MyMap_){
+            deg = pair.first;
+            coefficient = pair.second;
+            polinomial.MyMap_[deg] += coefficient;
+        }
+        return polinomial;
+    }
+
+    CPolinomial operator-(const CPolinomial& other) const{
+        int deg;
+        double coefficient;
+        CPolinomial polinomial = *this;
+        for (const auto& pair : other.MyMap_){
+            deg = pair.first;
+            coefficient = pair.second;
+            polinomial.MyMap_[deg] -= coefficient;
+        }
+        return polinomial;
+    }
+
+
+    CPolinomial& operator+=(const CPolinomial& obj){
+        auto temp = *this + obj;
+        return temp;
+    }
+
+    CPolinomial& operator-=(const CPolinomial& obj){
+        auto temp = *this - obj;
+        return temp;
+    }
+
+    CPolinomial operator*(int num) const{
+        int deg;
+        double coefficient;
+        CPolinomial temp;
+        for (const auto& pair : MyMap_){
+            deg = pair.first;
+            coefficient = pair.second;
+            temp.MyMap_[deg] = coefficient * num;
+        }
+        return temp;
+    }
+
+    CPolinomial operator*(const CPolinomial& obj) const{
+        CPolinomial temp;
+        int deg;
+        double coefficient;
+        for (const auto& pair1 : MyMap_){
+            for (const auto& pair2 : obj.MyMap_){
+                coefficient = pair1.second * pair2.second;
+                deg = pair1.first + pair2.first;
+                temp.MyMap_[deg] += coefficient;
+            }
+        }
+        return temp;
+    }
+
+    CPolinomial operator/(int number) const{
+        CPolinomial temp;
+        int deg;
+        double coefficient;
+        for (const auto& pair : MyMap_){
+            deg = pair.first;
+            coefficient = pair.second;
+            temp.MyMap_[deg] = coefficient / number;
+        }
+        return temp;
+    }
+
+    CPolinomial& operator*=(const CPolinomial& obj){
+        auto temp = *this * obj;
+        return temp;
+    }
+
+    CPolinomial& operator/=(int num){
+        auto temp = *this / num;
+
+        return temp;
+    }
+
+    float operator[](int deg){
+        return MyMap_[deg];
+    }
+
+    friend bool operator==(const CPolinomial &left, const CPolinomial &right);
+    friend bool operator!=(const CPolinomial &left, const CPolinomial &right);
+
+    friend std::ostream& operator<<(std::ostream& out, const CPolinomial& polynom);
+    friend std::istream& operator>>(std::istream& in, CPolinomial& polynom);
 
 };
 
-    bool operator==(const CPolynom &left,const CPolynom &right){
-        if(left.k_ == right.k_ &&  left.n_ == right.n_){
-            for (int i = left.n_; i >= left.k_; i--){
-                if (left.c_[i - left.k_] != right.c_[i - right.k_])
-                    return false;
-            }
-            return true;
+bool operator==(const CPolinomial& left, const CPolinomial &right) {
+    auto it1 = left.MyMap_.begin();
+    auto it2 = right.MyMap_.begin();
 
-        } else return false;
-
-    }
-
-    bool operator!=(const CPolynom &left,const CPolynom &right){
-        if(left.k_ == right.k_ &&  left.n_ == right.n_){
-            for (int i = left.n_; i >= left.k_; i--){
-                if (left.c_[i - left.k_] != right.c_[i - right.k_])
-                    return true;
-            }
+    while (it1 != left.MyMap_.end()){
+        if ((it1->first != it2->first) || (it1->second != it2->second))
             return false;
-
-        } else return true;
+        it1++; it2++;
     }
+    return true;
+}
 
-    CPolynom operator-(const CPolynom &obj){
-        CPolynom new_object = obj;
-        for (int i = obj.n_; i >= obj.k_; i--){
-           new_object.c_[i - obj.k_] *= -1;
+bool operator!=(const CPolinomial &left, const CPolinomial &right) {
+    auto it1 = left.MyMap_.begin();
+    auto it2 = right.MyMap_.begin();
+    while (it1 != left.MyMap_.end()){
+        if ((it1->first != it2->first) || (it1->second != it2->second))
+            return true;
+        it1++; it2++;
+    }
+    return false;
+}
+
+std::ostream& operator<<(std::ostream& out, const CPolinomial& obj)
+{
+    auto it_1 = obj.MyMap_.end();
+    auto it_2 = obj.MyMap_.begin();
+
+    it_1--;
+
+    if (it_1 -> second != 0)
+        out << it_1 -> second << "x^" << it_1 -> first << " ";
+    it_1--; it_2--;
+
+    for (it_1; it_1 != it_2; it_1--)
+    {
+        if (it_1 -> first == 0)
+        {
+            if (it_1 -> second > 0)
+                out << "+ " << it_1->second << " ";
+            else if (it_1 -> second < 0)
+                out << "- " << -it_1 -> second << " ";
         }
-        return new_object;
+
+        else if (it_1 -> first < 0)
+            out << "- " << -it_1->second << "x^" << it_1->first << " ";
+        else if (it_1->first > 0)
+            out << "+ " << it_1->second << "x^" << it_1->first << " ";
+
     }
 
+    out << std::endl;
+    return out;
+}
 
-int main() {
-    CPolynom polynom_1;
-    CPolynom polynom_2(100,2);
-    polynom_1.show_polynom();
-    polynom_2.show_polynom();
-    std::cout << (polynom_1 != polynom_2) << std::endl;
-    polynom_1 = polynom_2;
-    std::cout << (polynom_1 != polynom_2) << std::endl;
-    polynom_1.show_polynom();
-    polynom_2 = -polynom_2;
-    polynom_2.show_polynom();
+std::istream& operator>>(std::istream& in, CPolinomial& obj)
+{
+    int k, deg;
+    double coefficient;
+    std::cout << "Enter amount: " << std::endl;
+    in >> k;
+    for (int i = 0; i < k; i++)
+    {
+        in >> coefficient >> deg;
+        obj.MyMap_[deg] = coefficient;
+    }
+    return in;
+}
+
+int main()
+{
+    CPolinomial polinomial_1({ {2,1}, {3,0} });
+    CPolinomial polinomial_2({ {4,3}, {6,5} });
+    // CPolinomial polinomial_3;
+
+    std::cout <<  polinomial_1;
+    std::cout << -polinomial_1;
+    std::cout <<  polinomial_2;
+    // std::cout << polinomial_3;
+
+
+
+    std::cout << polinomial_1 + polinomial_2;
+
     return 0;
 }
