@@ -13,13 +13,17 @@ locale
 -
 string
 -
-map
--
 vector
 -
 codecvt
 -
 windows.h
+-
+cstdlib
+-
+unordered_map
+-
+cmath
 -
 C:/Users/86532/Study/1 grade/Proga/Labs/C++/lib/pugixml-master/src/pugixml.hpp
 -
