@@ -149,18 +149,18 @@ bool comparator ( CPoint left,  CPoint right)
         if (first == last)
             return true;
 
-        T start = first;
-        T finish = last;
-        --finish;
+        T it_start = first;
+        T it_finish = last;
+        --it_finish;
 
-        while (start != finish)
+        while (it_start != it_finish)
         {
-            if (*start != *finish)
+            if (*it_start != *it_finish)
                 return false;
-            ++start;
-            if (start == finish)
+            ++it_start;
+            if (it_start == it_finish)
                 return true;
-            --finish;
+            --it_finish;
         }
 
         return true;
