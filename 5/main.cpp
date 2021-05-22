@@ -1,53 +1,155 @@
 #include <iostream>
+#include <exception>
 using namespace std;
 
 class CRingBuffer {
+
 private:
     int* buffer_;
-    int head_;       // index of the future value
-    int tail_;       // index of the older inserted value, except if empty / head_ == index
-    int length_;
+    int head_;
+    int tail_;
+    int capacity_;
+    int size_;
 
 
 public:
-
-    CRingBuffer(int length);
-    void push_back(int data);
-    void push_front(int data);
+    explicit CRingBuffer(int capacity);
+    int* shiftRight(int data);
+    void pushBack(int data);
+    void pushFront(int data);
+    int popFront();
+    int popBack();
+    int getFromHead();
+    int getFromTail();
+    void setHead(int data);
+    void setTail(int data);
     void print() const;
+    void setCapacity(int newCapacity);
+    int* del(int newCapacity);
 
+
+    int operator[] (int index){
+        return buffer_[index];
+    }
 };
 
-// The buffer_ is initialized empty, head_ == tail_
-// I can initialize the indexes by any other valid
-// value, this is not relevant
-CRingBuffer::CRingBuffer(int length)
+
+CRingBuffer::CRingBuffer(int capacity)
     : head_(0)
-    , tail_(0) {
-    length_ = length;
-    buffer_ = new int [length];
+    , tail_(0)
+    , size_(0){
+    capacity_ = capacity;
+    buffer_ = new int [capacity] {};
 }
 
-// push_back a new value,
-void CRingBuffer::push_back(int data){
+int* CRingBuffer::shiftRight(int data){
+    int* newBuffer = new int [capacity_] {};
+    newBuffer[0] = data;
+
+    for(int i = 1; i < capacity_; i++){
+        newBuffer[i] = buffer_[i - 1];
+    }
+
+    delete []buffer_;
+    return newBuffer;
+
+}
+
+// pushBack a new value,
+void CRingBuffer::pushBack(int data){
     buffer_[head_] = data;
-    head_ = (head_ + 1) % length_;
+    head_ = (head_ + 1) % capacity_;
 
     if (head_ == tail_)
-        tail_ = (tail_ + 1) % length_;
+        tail_ = (tail_ + 1) % capacity_;
+
+    size_++;
+    if (size_ > capacity_)
+            size_ = capacity_;
 }
 
-void CRingBuffer::push_front(int data){
+void CRingBuffer::pushFront(int data){
+    buffer_ = shiftRight(data);
+    tail_ = (tail_ + 1) % capacity_;
 
+    size_++;
+
+    if (size_ > capacity_)
+        size_ = capacity_;
 }
 
-// print the content and indexes
+int CRingBuffer::popFront(){
+    int temp = buffer_[head_];
+    buffer_[head_] = 0;
+    head_ = (head_ + 1) % capacity_;
+    size_--;
+    if (size_ < 0)
+         size_ = 0;
+
+    return temp;
+}
+
+int CRingBuffer::popBack(){
+    int temp = buffer_[tail_];
+    buffer_[tail_] = 0;
+    tail_ = (tail_ - 1) % capacity_;
+
+    size_--;
+    if (size_ < 0)
+          size_ = 0;
+
+    return temp;
+}
+
+void CRingBuffer::setCapacity(int newCapacity){
+
+    buffer_ = del(newCapacity);
+    capacity_ = newCapacity;
+}
+
+int* CRingBuffer::del(int newCapacity){
+    int* newBuffer = new int[newCapacity] {};
+
+    if (newCapacity <= capacity_) {
+        for (int i = 0; i < newCapacity; i++) {
+            newBuffer[i] = buffer_[i];
+        }
+    } else {
+        for (int i = 0; i < capacity_; i++) {
+            newBuffer[i] = buffer_[i];
+        }
+    }
+
+    delete[] buffer_;
+    return newBuffer;
+}
+
+int CRingBuffer::getFromHead(){
+    return (size_ > 0) ? buffer_[head_ - 1] :
+                                    throw std::invalid_argument("There isn't head in buffer");
+}
+
+
+int CRingBuffer::getFromTail(){
+    return (size_ > 0) ? buffer_[tail_] :
+                                    throw std::invalid_argument("There isn't tail in buffer");
+}
+
+// only for change data
+void CRingBuffer::setHead(int data){
+    buffer_[head_ - 1] = data;
+}
+
+
+void CRingBuffer::setTail(int data){
+    buffer_[tail_] = data;
+}
+
+
+
 void CRingBuffer::print() const {
 
-    /*for (int p = tail_; p != head_; p = (p + 1) % length_)
-        cout << buffer_[p] << ' ';*/
-
-    for (int i = 0; i < length_; i++){
+    for (int i = 0; i < capacity_; i++){
         std::cout << buffer_[i] << " ";
     }
     cout << " (head_= " << head_ << ", tail_ = " << tail_ << ')' << endl;
@@ -55,36 +157,35 @@ void CRingBuffer::print() const {
 
 int main()
 {
-    CRingBuffer test(7);
+    CRingBuffer test(3);
 
     test.print();
 
-    test.push_back(1);
+    test.pushBack(1);
     test.print();
 
-    test.push_back(2);
+    test.pushBack(2);
     test.print();
 
-    test.push_back(3);
+    test.pushBack(3);
     test.print();
 
-    test.push_back(4);
+    test.pushBack(4);
     test.print();
 
-    test.push_back(5);
+    test.setCapacity(8);
     test.print();
 
-    test.push_back(6);
+    test.setHead(10);
+    test.setTail(20);
     test.print();
 
-    test.push_back(7);
-    test.print();
+    std::cout << "The head element is: " << test.getFromHead() << std::endl;
+    std::cout << "The tail element is: " << test.getFromTail() << std::endl;
 
-    test.push_back(8);
-    test.print();
-
-    test.push_back(9);
-    test.print();
+    test.pushFront(2);
+    test.popFront();
+    test.popBack();
 
     return 0;
 }
