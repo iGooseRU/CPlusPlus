@@ -1,0 +1,3 @@
+C:\Programming\IDE\CLion\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Rubik.dir/objects.a
+C:\Programming\Compily\MinGW\mingw64\bin\ar.exe cr CMakeFiles\Rubik.dir/objects.a @CMakeFiles\Rubik.dir\objects1.rsp
+C:\Programming\Compily\MinGW\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Rubik.dir/objects.a -Wl,--no-whole-archive  -o Rubik.exe -Wl,--out-implib,libRubik.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Rubik.dir\linklibs.rsp
