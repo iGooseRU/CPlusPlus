@@ -64,10 +64,18 @@ Colors::Colors(std::string str) {
     }
 
     // сохранение вектора в файл
-
-    PrintingCube();
+    ofstream fout("cube.txt");
+    int cnt = 0;
+    for(int i = 0; i < 6; i++) {
+        for (int j = 0; j < 9; j++) {
+                fout << cubeVec[i][j];
+        }
+        fout << "\n";
+    }
 
     vec = cubeVec;
+
+    PrintingCube(vec);
 }
 
 /**
@@ -339,7 +347,7 @@ vector<vector<char>> Colors::SolvingByUser()
         }
 
         cout << "  Applied the Move... Cube looks like..." << endl;
-        PrintingCube();
+        PrintingCube(vec);
         cout << endl;
 
         /// Checking if Cube is solved.....
@@ -631,7 +639,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 1 Completed... Solved the WHITE CROSS" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 2 : Solving WHITE CORNERS in UPPER Layer
@@ -825,7 +833,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 2 Completed... Solved the UPPER LAYER" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 3 : Solving RED, BLUE, ORANGE & GREEN EDGES in MIDDLE LAYER
@@ -1137,7 +1145,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 3 Completed... Solved the MIDDLE LAYER" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 4 : Solving YELLOW CROSS in BOTTOM Layer
@@ -1220,7 +1228,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 4 Completed... Solved the YELLOW CROSS" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 5 : Solving YELLOW CORNERS in Bottom Layer
@@ -1371,7 +1379,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 5 Completed... Solved the YELLOW LAYER" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 6 : Solving RED, BLUE, ORANGE & GREEN CORNERS in BOTTOM Layer
@@ -1514,7 +1522,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
     }
 
     cout << "  Stage 6 Completed... Solved the CORNERS of BOTTOM LAYER" << endl;
-    PrintingCube();
+    PrintingCube(vec);
 
     /**
      *   Stage 7 : Solving RED, BLUE, ORANGE & GREEN EDGES in BOTTOM LAYER
@@ -1696,7 +1704,7 @@ vector<vector<char>> Colors::SolvingByAlgorithm()
         }
     }
     cout << "  Stage 7 Completed... Solved the BOTTOM LAYER" << endl;
-    PrintingCube();
+    PrintingCube(vec);
     cout <<endl;
 
     cout << " Hurray!!! We have Solved the Rubik's Cube..... :)" << endl;

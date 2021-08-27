@@ -88,9 +88,57 @@ vector<char> Cube::rotate_anti_clock(vector<char> vec)
  */
 
 /// Printing the Cube.....
-void Cube::PrintingCube()
+void Cube::PrintingCube(vector<vector<char>> V)
 {
     /// Printing WHITE Layer...
+    cout << endl;
+    int cnt = 0;
+    cout << "\t           ---------" << endl;
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "\t           ";
+        cout << "| ";
+        for (int j = 0; j < 3; j++)
+        {
+            cout << V[0][cnt] << " ";
+            cnt++;
+        }
+        cout << "|" << endl;
+    }
+    cout << "\t           ---------" << endl;
+
+    /// Printing RED, BLUE, ORANGE and GREEN Layer...
+    cout << "\t --------- --------- --------- ---------" << endl;
+    for (int j = 0; j < 9; j += 3)
+    {
+        cout << "\t | " << V[2][j] << " " << V[2][j + 1] << " " << V[2][j + 2] << " | ";
+        cout << "| " << V[1][j] << " " << V[1][j + 1] << " " << V[1][j + 2] << " | ";
+        cout << "| " << V[4][j] << " " << V[4][j + 1] << " " << V[4][j + 2] << " | ";
+        cout << "| " << V[3][j] << " " << V[3][j + 1] << " " << V[3][j + 2] << " | ";
+        cout << endl;
+    }
+    cout << "\t --------- --------- --------- ---------" << endl;
+
+    /// Printing YELLOW Layer...
+    cnt = 0;
+    cout << "\t           ---------" << endl;
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "\t           ";
+        cout << "| ";
+        for (int j = 0; j < 3; j++)
+        {
+            cout << V[5][cnt] << " ";
+            cnt++;
+        }
+        cout << "|" << endl;
+    }
+    cout << "\t           ---------" << endl;
+    cout << endl;
+}
+
+void Cube::PrintingCube()
+{
     cout << endl;
     int cnt = 0;
     cout << "\t           ---------" << endl;
@@ -136,7 +184,6 @@ void Cube::PrintingCube()
     cout << "\t           ---------" << endl;
     cout << endl;
 }
-
 
 
 

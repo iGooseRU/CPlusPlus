@@ -3,18 +3,21 @@
 
 using namespace std;
 
+// Вывести импорт файла в отдельный метод, а не в конструктор
+// Генерация
+
 int main()
 {
 
     char ans = 'y';
     while (ans == 'y' || ans == 'Y')
     {
-        Cube myCube;
+        Cube myCube(ans);
         cout << "\t";
-        myCube.PrintingCube();
         cout << " Colour Coding:  W = White, R = Red, B = Blue, "
                                         "O = Orange, G = Green, Y = Yellow\n";
         cout << endl;
+        myCube.PrintingCube();
 
         cout << " You have to Scramble the Cube, type {A B C D E..... or ABCDE....} from the moves given below: " << endl;
         cout << "  A: Right Clockwise " << endl;

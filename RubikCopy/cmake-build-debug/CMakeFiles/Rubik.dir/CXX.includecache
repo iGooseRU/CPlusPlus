@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../ConsoleApplication4/Cube.h
-vector
--
-iostream
--
-
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Colors.cpp
-Colors.h
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Colors.h
-fstream
--
-
 C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Colors.h
 vector
 -
@@ -25,4 +13,18 @@ iostream
 -
 Cube.h
 -
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Cube.h
+vector
+-
+iostream
+-
+fstream
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/main.cpp
+Cube.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Cube.h
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikCopy/ConsoleApplication4/Colors.h
 
