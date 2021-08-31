@@ -1,3 +1,0 @@
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/4 new/cmake-build-debug/CMakeFiles/4_new.dir
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/4 new/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/86532/Study/1 grade/Proga/Labs/C++/4 new/cmake-build-debug/CMakeFiles/rebuild_cache.dir
