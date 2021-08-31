@@ -1,0 +1,72 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../ConsoleApplication4/Cube.h
+vector
+-
+iostream
+-
+fstream
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Blue.cpp
+Cube.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Cube.h
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.cpp
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+fstream
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+vector
+-
+iostream
+-
+Cube.h
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Cube.cpp
+Cube.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Cube.h
+cstdlib
+-
+ctime
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Cube.h
+vector
+-
+iostream
+-
+fstream
+-
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Green.cpp
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Orange.cpp
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Red.cpp
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/main.cpp
+Cube.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Cube.h
+Colors.h
+C:/Users/86532/Study/1 grade/Proga/Labs/C++/RubikLab6/ConsoleApplication4/Colors.h
+ctime
+-
+
