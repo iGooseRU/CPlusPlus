@@ -29,11 +29,9 @@ public:
     }
 
 
-/// Printing the Cube
     void PrintingCube(vector<vector<char>> V);
     void PrintingCube();
 
-/// Rotation of the Side
     vector<char> rotate_clock(vector<char> vec);
     vector<char> rotate_anti_clock(vector<char> vec);
 

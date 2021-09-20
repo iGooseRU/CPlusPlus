@@ -1,10 +1,8 @@
 #include "Cube.h"
 #include <cstdlib>
-#include <ctime>
 
 using namespace std;
 
-/// Rotation of Side Clockwise
 vector<char> Cube::rotate_clock(vector<char> vec)
 {
     char a = vec[2];
@@ -30,7 +28,6 @@ vector<char> Cube::rotate_clock(vector<char> vec)
     return vec;
 }
 
-/// Rotation of Side Anti-Clockwise
 vector<char> Cube::rotate_anti_clock(vector<char> vec)
 {
     char a = vec[0];
@@ -58,7 +55,7 @@ vector<char> Cube::rotate_anti_clock(vector<char> vec)
 
 
 /**
- *   Skeleton of the Rubik's Cube
+ *   Example:
  *
  *                 ------------
  *                 | W0 W1 W2 |
@@ -76,20 +73,16 @@ vector<char> Cube::rotate_anti_clock(vector<char> vec)
  *                 | Y6 Y7 Y8 |
  *                 ------------
  *
- *  Colour Coding:  W = White, R = Red, B = Blue, O = Orange, G = Green, Y = Yellow
+ *  W = White, R = Red, B = Blue, O = Orange, G = Green, Y = Yellow
  *
- *  Vec = {
  *          0 : WHITE
  *          1 : RED
  *          2 : BLUE
  *          3 : ORANGE
  *          4 : GREEN
  *          5 : YELLOW
- *        }
- *
  */
 
-/// Printing the Cube.....
 void Cube::PrintingCube(vector<vector<char>> V)
 {
     /// Printing WHITE Layer...

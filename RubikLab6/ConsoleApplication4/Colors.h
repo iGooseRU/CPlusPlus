@@ -15,7 +15,6 @@ protected:
 public:
     Colors();
 
-
     vector<vector<char>> SolvingByUser();
     vector<vector<char>> SolvingByAlgorithm();
 

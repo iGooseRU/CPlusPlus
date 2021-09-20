@@ -3,7 +3,6 @@
 
 using namespace std;
 
-/// Rotation of BLUE Right Clockwise
 vector<vector<char>> Colors::Blue_Right_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][2];
@@ -31,7 +30,6 @@ vector<vector<char>> Colors::Blue_Right_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Right Anti-Clockwise
 vector<vector<char>> Colors::Blue_Right_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][2];
@@ -59,7 +57,6 @@ vector<vector<char>> Colors::Blue_Right_Anti_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Left Clockwise
 vector<vector<char>> Colors::Blue_Left_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][0];
@@ -87,7 +84,6 @@ vector<vector<char>> Colors::Blue_Left_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Left Anti-Clockwise
 vector<vector<char>> Colors::Blue_Left_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][0];
@@ -115,7 +111,6 @@ vector<vector<char>> Colors::Blue_Left_Anti_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Up Clockwise
 vector<vector<char>> Colors::Blue_Up_Clock(vector<vector<char>> vec)
 {
     char a = vec[1][0];
@@ -143,7 +138,6 @@ vector<vector<char>> Colors::Blue_Up_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-// Rotation of BLUE Up Anti-Clockwise
 vector<vector<char>> Colors::Blue_Up_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[1][0];
@@ -171,7 +165,6 @@ vector<vector<char>> Colors::Blue_Up_Anti_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Down Clockwise
 vector<vector<char>> Colors::Blue_Down_Clock(vector<vector<char>> vec)
 {
     char a = vec[1][6];
@@ -199,7 +192,6 @@ vector<vector<char>> Colors::Blue_Down_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Down Anti-Clockwise
 vector<vector<char>> Colors::Blue_Down_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[1][6];
@@ -227,7 +219,6 @@ vector<vector<char>> Colors::Blue_Down_Anti_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-///Rotation of BLUE Front Clockwise
 vector<vector<char>> Colors::Blue_Front_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][6];
@@ -255,7 +246,6 @@ vector<vector<char>> Colors::Blue_Front_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Front Anti-Clockwise
 vector<vector<char>> Colors::Blue_Front_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][6];
@@ -283,7 +273,6 @@ vector<vector<char>> Colors::Blue_Front_Anti_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Back Clockwise
 vector<vector<char>> Colors::Blue_Back_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][0];
@@ -311,7 +300,6 @@ vector<vector<char>> Colors::Blue_Back_Clock(vector<vector<char>> vec)
     return vec;
 }
 
-/// Rotation of BLUE Back Anti-Clcockwise
 vector<vector<char>> Colors::Blue_Back_Anti_Clock(vector<vector<char>> vec)
 {
     char a = vec[0][0];
